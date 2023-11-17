@@ -22,10 +22,6 @@ function buildCategoryOptions(categories) {
 }
 
 function displayProductBO(product) {
-
-
-
-
     let html = `
     <div class="product_promo">
         <div class="product">`
@@ -295,6 +291,8 @@ function cancel(modal, form) {
 // ANCHOR Product Modal Buttons Handling
 
 function saveProductToDB() {
+    let form = document.getElementById("modalProduct-form")
+    form.classList.add("disable");
     const formValidator = new ProductFormValidator();
     if (formValidator.validateForm()) {
         let id = document.getElementById("productIdInput").value
@@ -304,15 +302,27 @@ function saveProductToDB() {
         let price = document.getElementById("price").value
         let pictureInput = document.getElementById("picture")
         let picture = pictureInput.files[0]
+        let oldImageUrl = document.getElementById("currentFileUrl").innerText;
         let product = {}
         if(id != ""){
-            product = {
-                product_id: id,
-                title: title,
-                description: description,
-                price: price,
-                image: picture.type,
-                category: category
+            if(picture != null) {
+                product = {
+                    product_id: id,
+                    title: title,
+                    description: description,
+                    price: price,
+                    image: picture.type,
+                    category: category
+                }
+            } else {
+                product = {
+                    product_id: id,
+                    title: title,
+                    description: description,
+                    price: price,
+                    image: oldImageUrl,
+                    category: category
+                }
             }
             putProduct(product, picture)
         } else {
@@ -326,12 +336,17 @@ function saveProductToDB() {
 
             postProduct(product, picture);
         }
+    } else {
+        let form = document.getElementById("modalProduct-form")
+        form.classList.remove("disable");
     }
 }
 
 // ANCHOR Promo Modal Buttons Handling
 
 function savePromoToDB() {
+    let form = document.getElementById("modalPromo-form")
+    form.classList.add("disable");
     const formValidator = new PromoFormValidator();
     if (formValidator.validateForm()) {
         let productId = document.getElementById("product-id").value
@@ -356,6 +371,9 @@ function savePromoToDB() {
             }
             postPromo(promo, productId)
         }
+    } else {
+        let form = document.getElementById("modalPromo-form")
+        form.classList.remove("disable");
     }
 
 }
@@ -496,6 +514,8 @@ function postProduct(product, picture) {
                 document.getElementById("displayAllProducts").dispatchEvent(click)
                 let formProduct = document.getElementById("modalProduct-form")
                 formProduct.reset()
+                let form = document.getElementById("modalProduct-form")
+                form.classList.remove("disable");
                 shutModal("modalProduct")
             }  
         }
@@ -526,6 +546,8 @@ function putProduct(product, picture) {
                 document.getElementById("displayAllProducts").dispatchEvent(click)
                 let formProduct = document.getElementById("modalProduct-form")
                 formProduct.reset()
+                let form = document.getElementById("modalProduct-form")
+                form.classList.remove("disable");
                 shutModal("modalProduct")
             }  
         }
@@ -577,6 +599,8 @@ function postPromo(promo, productId) {
                 document.getElementById("displayAllProducts").dispatchEvent(click)
                 let formPromo = document.getElementById("modalPromo-form")
                 formPromo.reset()
+                let form = document.getElementById("modalPromo-form")
+                form.classList.remove("disable");
                 shutModal("modalPromo")
             }  
         }
@@ -602,6 +626,8 @@ function putPromo(promo) {
                 document.getElementById("displayAllProducts").dispatchEvent(click)
                 let formPromo = document.getElementById("modalPromo-form")
                 formPromo.reset()
+                let form = document.getElementById("modalPromo-form")
+                form.classList.remove("disable");
                 shutModal("modalPromo")
             }  
         }

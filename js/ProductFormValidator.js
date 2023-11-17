@@ -42,7 +42,7 @@ class ProductFormValidator {
         const description = this.descriptionTextarea.value;
         if (description.length > 100) {
             let newValue = this.titleInput.value.slice(0, 100)
-            this.titleInput.value = newValue;
+            this.descriptionTextarea.value = newValue;
             document.getElementById('description').classList.add("invalid")
             return false;
         }
@@ -66,7 +66,11 @@ class ProductFormValidator {
     }
 
     validatePicture() {
-        if(!this.pictureInput.files[0]) {
+        let currentPicture = document.getElementById("currentFileUrl")
+        if(currentPicture.innerText != "") {
+            document.getElementById('picture').classList.remove("invalid")
+            return true;
+        } else if(!this.pictureInput.files[0]) {
             document.getElementById('picture').classList.add("invalid")
             return false;
         } else {

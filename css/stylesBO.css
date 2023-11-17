@@ -36,10 +36,20 @@ button,
     margin: 10px;
     background-color: var(--color-white);
     color: var(--color-dark-green);
+    font-size: 1em;
     transition-duration: 0.4s;
+    font-weight: 400;
+}
+button.delete:hover {
+    color: var(--color-dark-red);
+}
+button.edit:hover {
+    color: var(--color-dark-orange);
 }
 
-button:hover {
+button:hover,
+a.button:hover {
+    color: var(--color-dark-green);
     background-color: var(--color-mercadona-light-grey);
 }
 #allProducts {
@@ -50,7 +60,7 @@ button:hover {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    border-bottom: 1px solid var(--color-mercadona-light-text);
+    border-top: 1px solid var(--color-mercadona-light-text);
 }
 .product_promo h3 {
     margin: 10px 0;
