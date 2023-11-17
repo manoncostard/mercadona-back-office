@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/stylesBO.css">
+    <title>Back Office - Mercadona</title>
+</head>
+<body id="body">
+    <script>
+        const URL_DEV = "https://mercadona-api-v1-12436f7e2497.herokuapp.com/"
+    </script>
+
+<!-- ANCHOR HEADER COMPOSANT START -->
+
+    <header>
+        <img id="logo" src="../resources/Mercadona-logo.png">
+        <p id="siteName">MERCADONA BACK OFFICE</p>
+        <div id="quickAccess">
+            <button>My Account</button>
+            <button onclick="logout()">Log Out</button>
+            <button>Client Site</button>
+        </div>
+    </header>
+    <div id="menu">
+        <button id="displayAllProducts" onclick="filterAll()" class="selected">Display All Products</button>
+        <button id="displayByCategory" class="display-by-category" onclick="filterByCategory()" >Filter by Category</button>
+        <button id="displayById" onclick="filterById()">Filter by Product Id</button>
+    </div>
+    <div id="submenu" class="submenu">
+        <button class="submenu_button">FRUITS</button>
+        <button class="submenu_button">VEGETABLES</button>
+        <button class="submenu_button">MEAT</button>
+        <button class="submenu_button">FISH</button>
+        <button class="submenu_button">HOME</button>
+        <button class="submenu_button">CLEANING</button>
+    </div>
+    <div id="filterByIdSubmenu">
+        <p id="submenuLabel">Enter the product ID number here: </p>
+        <input type="text" name="productId" id="productId">
+        <button onclick="submitFilterById()">Search</button>
+    </div>
+
+    <!-- ANCHOR MAIN COMPOSANT START -->
+
+    <main>
+        <div id="mainActions">
+            <button id="addProductsBtn" onclick="createProduct()">+ Create a Product</button>
+        </div>
+        <div id="allProducts" class="all_products"></div>
+    </main>
+
+    <!-- ANCHOR PRODUCT MODAL COMPOSANT START -->
+
+    <div class="modal" id="modalProduct">
+        <form class="modalForm" id="modalProduct-form">
+            <h3>Enter the product info</h3>
+            <div class="div-id">
+                <label>ID</label>
+                <input type="text" class="idInput" id="productIdInput" disabled>
+            </div>
+            <fieldset>
+                <div class="input-div">
+                    <label>Title *</label>
+                    <input type="text" name="title" id="title" class="required">
+                    <p id="errorTitle" class="error-form">Title should be between 2 and 50 characters.</p>
+                </div>
+                <div class="input-div">
+                    <label>Category *</label>
+                    <select name="category" id="category" class="required">
+                        <option selected="true" disabled="disabled">Choose Category</option>
+                    </select>
+                    <p id="errorCategory" class="error-form">Invalid category selected.</p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Descrition *</legend>
+                <textarea name="description" id="description" class="required"></textarea>
+                <p id="errorDescription" class="error-form">Make sure to describe the product.</p>
+            </fieldset>
+            <fieldset>
+                <div class="input-div smallInput">
+                    <legend>Price *</legend>
+                    <input type="text" name="price" id="price" class="required">
+                    <p id="errorPrice" class="error-form">Invalid price. Please enter number formatted as such: 10.95</p>
+                </div>
+                <div class="input-div">
+                    <label for="picture">Upload a png or jpeg image: *</label>
+                    <input type="file" id="picture" name="picture" accept="image/png, image/jpeg" class=""/>
+                    <p id="errorPicture" class="error-form">Invalid picture format. Please upload a png or jpeg image.</p>
+                    <p id="currentFile" class="currentFile">Existing picture:</p>
+                    <p id= "currentFileUrl" class="currentFileUrl"></p>
+                </div>
+            </fieldset>
+            <div class="div-btn">
+                <button type="button" class="modalBtn cancelBtn" id="cancelProduct" onclick="cancel('modalProduct', 'modalProduct-form')">Cancel</button>
+                <button type="button" class="modalBtn saveBtn" id="saveProduct" onclick="saveProductToDB()">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ANCHOR PROMO MODAL COMPOSANT START -->
+
+    <div class="modal" id="modalPromo">
+        <form class="modalForm" id="modalPromo-form">
+            <h3>Enter the promotion info</h3>
+            <div class="id-input-div">
+                <div class="div-id">
+                    <label>Promotion ID</label>
+                    <input type="text" class="idInput" id="promoId" disabled>
+                </div>
+                <div class="div-id">
+                    <label>Product ID</label>
+                    <input type="text" class="idInput"  id="product-id" disabled>
+                </div>
+            </div>
+            <fieldset>
+                <legend>Start Date *</legend>
+                <input type="date" name="startDate" id="startDate">
+                <p id="errorStartDate" class="error-form">Veuillez selectionner une date.</p>
+            </fieldset>
+            <fieldset>
+                <legend>End Date *</legend>
+                <input type="date" name="endDate" id="endDate" class="required">
+                <p id="errorEndDate" class="error-form">Veuillez selectionner une date future.</p>
+            </fieldset>
+            <fieldset>
+                <legend>Reduction % *</legend>
+                <input placeholder="20" type="text" name="reduction" id="reduction" class="required">
+                <p id="errorReduction" class="error-form">Veuillez saisir un entier compris entre 1 et 100.</p>
+            </fieldset>
+            
+            <div class="div-btn">
+                <button type="button" class="modalBtn cancelBtn" id="cancelPromo" onclick="cancel('modalPromo', 'modalPromo-form')">Cancel</button>
+                <button type="button" class="modalBtn saveBtn" id="savePromo" onclick="savePromoToDB()">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../js/ProductFormValidator.js"></script>
+    <script src="../js/PromoFormValidator.js"></script>
+    <script src="../js/homepage.js"></script>
+</body>
+</html>

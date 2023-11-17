@@ -1,0 +1,20 @@
+#mainActions {
+    width: 100%;
+    display: flex;
+    padding: 30px 150px;
+    justify-content: end;
+}
+
+#addProductsBtn {
+    background-color: var(--color-mercadona-green);
+    color: var(--color-white);
+    height: 50px;
+    border: 2px solid var(--color-mercadona-green);
+    padding: 0px 40px;
+    font-size: 1em;
+}
+
+#addProductsBtn:hover {
+    background-color: var(--color-white);
+    color: var(--color-mercadona-green);
+}

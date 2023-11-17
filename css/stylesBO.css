@@ -1,0 +1,143 @@
+body {
+    background-color: var(--color-white);
+}
+p {
+    margin: 5px 0;
+}
+
+body.modal-open {
+    height: 100vh;
+    overflow-y: hidden;
+    padding-right: 15px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+aside {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+button{
+    cursor: pointer;
+    height: 30px;
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: none;
+    border: 1px solid var(--color-mercadona-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: var(--color-white);
+    color: var(--color-dark-green);
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: var(--color-mercadona-light-grey);
+}
+#allProducts {
+    width: 900px;
+}
+.product_promo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    border-bottom: 1px solid var(--color-mercadona-light-text);
+}
+.product_promo h3 {
+    margin: 10px 0;
+}
+.product,
+.promo {
+    display: flex;
+    padding: 10px;
+    margin: 40px 20px;
+}
+.product {
+    width: 80%;
+    max-width: 670px;
+}
+p.product_description {
+    font-size: 0.9em;
+}
+.product_prices {
+    margin: 10px 0 0 0;
+}
+
+
+.promo {
+    border: 1px solid var(--color-mercadona-border);
+    border-radius: 15px;
+    background-color: var(--color-mercadona-light-grey);
+    color: var(--color-dark-green);
+    width: 30%;
+    flex-direction: column;
+    margin: 40px 0px;
+    align-items: center;
+    justify-content: space-between;
+}
+.promo_title {
+    font-size: 1.2em;
+    color: var(--color-dark-green);
+    font-weight: 500;
+}
+.promo_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.promo_info p {
+    font-size: 0.9em;
+}
+.promo_actions,
+.product_actions  {
+    display: flex;
+    justify-content: center;
+}
+.product_image{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+.product_info_actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.product_info {
+    margin-left: 30px;
+    display:flex; 
+    flex-direction: column;
+    justify-content: start;
+}
+.product_prices {
+    display: flex;
+    align-items: flex-end;
+}
+
+.product_initialPrice {
+    text-decoration: line-through;
+    color: var(--color-mercadona-light-text);
+    margin-right: 20px;
+}
+.product_promoPrice {
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: var(--color-mercadona-red);
+}
+.product_promo_actions {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product_actions {
+    display: flex;
+
+}

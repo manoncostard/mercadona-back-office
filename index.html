@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>Mercdona Back-office</title>
+</head>
+<body id="body">
+    <script>
+        const URL_DEV = "https://mercadona-api-v1-12436f7e2497.herokuapp.com/"
+    </script>
+    <script src="../js/auth.js"></script>
+
+
+    <div id="loginDiv" style="display: none;">
+        <div id="logoAndName">
+            <img id="logo" src="../resources/Mercadona-logo.png">
+            <p id="siteName">MERCADONA BACK OFFICE</p>
+        </div>
+        <p>Restricted access. If you are an admin, please enter your authentication details below.</p>
+        <a href="https://mercadona.com">If you are a user, please follow this link to our website.</a>
+        <h1>Log in</h1>
+        <form>
+            <fieldset>
+                <label for="username">Email</label>
+                <input type="text" name="username" id="username" autocorrect="off" autofocus>
+            </fieldset>
+            <fieldset>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" autocomplete="off">
+            </fieldset>
+            <button id="submitAuth" class="submit-btn" type="button" onclick="login()">Log in</button>
+        </form>
+    </div>
+
+
+</body>
+</html>
