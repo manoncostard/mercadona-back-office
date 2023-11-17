@@ -41,7 +41,7 @@ class ProductFormValidator {
     validateDescription() {
         const description = this.descriptionTextarea.value;
         if (description.length > 100) {
-            let newValue = this.descriptionInput.value.slice(0, 100)
+            let newValue = this.descriptionTextarea.value.slice(0, 100)
             this.descriptionTextarea.value = newValue;
             document.getElementById('description').classList.add("invalid")
             return false;
@@ -70,10 +70,11 @@ class ProductFormValidator {
         let file = this.pictureInput.files[0];
         const allowedFileTypes = ['image/png', 'image/jpeg']
 
-        if(!this.pictureInput.files[0]) {
+        if(!this.pictureInput.files[0] && currentPicture.innerText == "") {
             document.getElementById('picture').classList.add("invalid")
             return false;
-        } else {
+        } else if(this.pictureInput.files[0]) {
+            let file = this.pictureInput.files[0];
             let fileType = file.type
             if(file.size > 1000000){
                 alert("File is too big!");
@@ -84,10 +85,7 @@ class ProductFormValidator {
                 this.pictureInput.value = "";
                 document.getElementById('picture').classList.add("invalid")
                 return false;
-            } else if (currentPicture.innerText != "") {
-                document.getElementById('picture').classList.remove("invalid")
-                return true;
-            }       
+            }     
         }
         document.getElementById('picture').classList.remove("invalid")
         return true;
