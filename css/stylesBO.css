@@ -22,7 +22,8 @@ aside {
     display: flex;
     flex-direction: column;
 }
-button{
+button,
+.button {
     cursor: pointer;
     height: 30px;
     padding: 15px;
