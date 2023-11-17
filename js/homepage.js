@@ -304,7 +304,6 @@ function saveProductToDB() {
         let price = document.getElementById("price").value
         let pictureInput = document.getElementById("picture")
         let picture = pictureInput.files[0]
-        console.log(picture)
         let product = {}
         if(id != ""){
             product = {

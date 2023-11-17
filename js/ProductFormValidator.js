@@ -73,7 +73,6 @@ class ProductFormValidator {
             let file = this.pictureInput.files[0];
             const allowedFileTypes = ['image/png', 'image/jpeg']
             const fileType = file.type
-            console.log(fileType)
             if (!allowedFileTypes.includes(fileType)) {
                 document.getElementById('picture').classList.add("invalid")
                 return false;
