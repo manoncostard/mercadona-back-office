@@ -24,7 +24,7 @@ function login() {
                 if(response !== "Mot de Passe éronné.") {
                     responseParsed = JSON.parse(response)
                     sessionStorage.setItem('jwtToken', responseParsed.token);
-                    window.location.href = "./homepage.html"
+                    window.location.href = "./homepage"
                 }
                 return xhr.response;
             }  
@@ -43,7 +43,7 @@ function checkAuth() {
             if(xhr.status !== 200) {
                 document.getElementById("loginDiv").style.display = "flex"
             } else {
-                window.location.href = "./homepage.html"
+                window.location.href = "./homepage"
                 return xhr.response;
             }  
         }

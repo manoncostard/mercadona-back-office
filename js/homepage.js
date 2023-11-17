@@ -103,7 +103,7 @@ function displayProductBO(product) {
     function logout() {
 
         sessionStorage.removeItem('jwtToken');
-        window.location.href = "./index.html"
+        window.location.href = "./"
     }
 
 
@@ -174,7 +174,7 @@ function editProduct(productId) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -226,7 +226,7 @@ function editPromo(productId) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -370,7 +370,7 @@ function getCategories() {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -395,7 +395,7 @@ function getAllProducts() {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -424,7 +424,7 @@ function getProductsByCategory(category) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -453,7 +453,7 @@ function getProductById(productId) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -489,7 +489,7 @@ function postProduct(product, picture) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -519,7 +519,7 @@ function putProduct(product, picture) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -545,7 +545,7 @@ function deleteProduct(productId) {
         xhr.addEventListener('readystatechange', function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 502 || xhr.status === 403) {
-                    window.location.href = "./index.html"
+                    window.location.href = "./"
                 } else if(xhr.status !== 200) {
                     alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
                 } else {
@@ -570,7 +570,7 @@ function postPromo(promo, productId) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -595,7 +595,7 @@ function putPromo(promo) {
     xhr.addEventListener('readystatechange', function() {
         if(xhr.readyState === 4) {
             if(xhr.status === 502 || xhr.status === 403) {
-                window.location.href = "./index.html"
+                window.location.href = "./"
             } else if(xhr.status !== 200) {
                 alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
             } else {
@@ -621,7 +621,7 @@ function deletePromo(productId, promoId) {
         xhr.addEventListener('readystatechange', function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 502 || xhr.status === 403) {
-                    window.location.href = "./index.html"
+                    window.location.href = "./"
                 } else if(xhr.status !== 200) {
                     alert('An error has occured. Code ' + xhr.status + ', Message: ' + xhr.statusText);
                 } else {
