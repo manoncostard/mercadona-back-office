@@ -41,7 +41,7 @@ class ProductFormValidator {
     validateDescription() {
         const description = this.descriptionTextarea.value;
         if (description.length > 100) {
-            let newValue = this.titleInput.value.slice(0, 100)
+            let newValue = this.descriptionInput.value.slice(0, 100)
             this.descriptionTextarea.value = newValue;
             document.getElementById('description').classList.add("invalid")
             return false;
