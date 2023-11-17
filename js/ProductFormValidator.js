@@ -67,21 +67,25 @@ class ProductFormValidator {
 
     validatePicture() {
         let currentPicture = document.getElementById("currentFileUrl")
-        if(currentPicture.innerText != "") {
-            document.getElementById('picture').classList.remove("invalid")
-            return true;
-        } else if(!this.pictureInput.files[0]) {
+        let file = this.pictureInput.files[0];
+        const allowedFileTypes = ['image/png', 'image/jpeg']
+        const fileType = file.type
+        if(!this.pictureInput.files[0]) {
             document.getElementById('picture').classList.add("invalid")
             return false;
-        } else {
-            let file = this.pictureInput.files[0];
-            const allowedFileTypes = ['image/png', 'image/jpeg']
-            const fileType = file.type
-            if (!allowedFileTypes.includes(fileType)) {
-                document.getElementById('picture').classList.add("invalid")
-                return false;
-            }
-        }        
+        } else if(file.size > 1048576){
+            alert("File is too big!");
+            this.pictureInput.value = "";
+            return false;
+        } else if (!allowedFileTypes.includes(fileType)) {
+            alert("File type not supported!");
+            this.pictureInput.value = "";
+            document.getElementById('picture').classList.add("invalid")
+            return false;
+        } else if (currentPicture.innerText != "") {
+            document.getElementById('picture').classList.remove("invalid")
+            return true;
+        }       
         document.getElementById('picture').classList.remove("invalid")
         return true;
     }

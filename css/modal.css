@@ -24,9 +24,9 @@
     align-items: center;
 }
 
-#modalPromo-form.disable > *,
+#modalPromo-form.disable *,
 #modalPromo-form.disable,
-#modalProduct-form.disable > *,
+#modalProduct-form.disable *,
 #modalProduct-form.disable {
     cursor: wait;
 }
